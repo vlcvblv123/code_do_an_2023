@@ -1,10 +1,14 @@
+import 'package:CodeGenius/Online_Course/common/entities/entities.dart';
 import 'package:CodeGenius/Online_Course/common/values/constant.dart';
 import 'package:CodeGenius/Online_Course/common/widgets/flutter_toast.dart';
 import 'package:CodeGenius/Online_Course/pages/sign_in/bloc/signin_blocs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/apis/user_api.dart';
 import '../../global.dart';
 
 class SignInController {
@@ -42,12 +46,20 @@ class SignInController {
             String? emai = user.email;
             String? id = user.uid;
             String? photoUrl = user.photoURL;
-            print("user opend_id ${id}");
-            print("user photo ${photoUrl}");
+
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+            loginRequestEntity.avatar = photoUrl;
+            loginRequestEntity.name = displayName;
+            loginRequestEntity.email = emai;
+            loginRequestEntity.open_id = id;
+            //ty 1 means email login
+            loginRequestEntity.type = 1;
+
             print("user exist");
-            Global.storageService
-                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
-            Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);
+            asyncPostAllData(loginRequestEntity);
+            //Global.storageService
+              //  .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
+            //Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
             toastInfo(msg: "Currently you are not user of this app");
             return;
@@ -66,7 +78,17 @@ class SignInController {
         }
       }
     } catch (e) {
-      //
+      print(e.toString());
     }
+  }
+
+
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+   EasyLoading.show(
+     indicator: const CircularProgressIndicator(),
+     maskType: EasyLoadingMaskType.clear,
+     dismissOnTap: true
+   );
+   var result = await UserAPI.login(params:loginRequestEntity);
   }
 }
