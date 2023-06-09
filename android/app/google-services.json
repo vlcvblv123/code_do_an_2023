@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "89050578881",
+    "project_id": "code-do-an-tot-nghiep-2023",
+    "storage_bucket": "code-do-an-tot-nghiep-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89050578881:android:d4d4a4766e6c4e34b23940",
+        "android_client_info": {
+          "package_name": "dinhthong.eaut.CodeGenius"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIapeH0yhNZee4oKN6opwMmRCogxdXuV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
