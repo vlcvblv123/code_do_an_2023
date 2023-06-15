@@ -43,14 +43,14 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             String? displayName = user.displayName;
-            String? emai = user.email;
+            String? emali = user.email;
             String? id = user.uid;
             String? photoUrl = user.photoURL;
-
+            print("${photoUrl}");
             LoginRequestEntity loginRequestEntity = LoginRequestEntity();
             loginRequestEntity.avatar = photoUrl;
             loginRequestEntity.name = displayName;
-            loginRequestEntity.email = emai;
+            loginRequestEntity.email = emali;
             loginRequestEntity.open_id = id;
             //ty 1 means email login
             loginRequestEntity.type = 1;

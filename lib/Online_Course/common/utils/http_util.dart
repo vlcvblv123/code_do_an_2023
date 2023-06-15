@@ -1,3 +1,4 @@
+import 'package:CodeGenius/Online_Course/common/values/constant.dart';
 import 'package:dio/dio.dart';
 
 class HttpUtil {
@@ -9,7 +10,7 @@ class HttpUtil {
 
   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
-        baseUrl: "http://192.168.16.103:8000/",
+        baseUrl: AppConstants.SERVER_API_URL,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout:Duration(seconds: 5),
         headers: {},
