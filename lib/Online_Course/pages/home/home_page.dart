@@ -16,17 +16,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // late HomeController _homeController;
+  late HomeController _homeController;
   @override
-  // void initState(){
-  //   super.initState();
-  //   _homeController = HomeController(context: context);
-  //   _homeController.init();
-  // }
+  void initState(){
+    super.initState();
+    _homeController = HomeController(context: context);
+    _homeController.init();
+
+  }
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return _homeController.userProfile!=null?Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(),
+      appBar: buildAppBar(_homeController.userProfile!.avatar.toString()),
       body: BlocBuilder<HomePageBlocs, HomePageStates>(
         builder: (context, state) {
           return Container(
@@ -42,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SliverToBoxAdapter(
                   child: homePageText(
-                    "Dinh Thong",
+                    _homeController.userProfile!.name!,
                     top: 5,
                   ),
                 ),
@@ -78,6 +80,6 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-    );
+    ):Container();;
   }
 }

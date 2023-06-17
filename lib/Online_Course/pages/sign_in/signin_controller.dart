@@ -83,22 +83,24 @@ class SignInController {
 
   Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
     EasyLoading.show(
-        indicator: const CircularProgressIndicator(),
+        indicator: CircularProgressIndicator(),
         maskType: EasyLoadingMaskType.clear,
         dismissOnTap: true);
     var result = await UserAPI.login(params: loginRequestEntity);
-    if(result.code == "200"){
+
+    if (result.code==200) {
       try {
-        Global.storageService.setString(AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
-        Global.storageService
-            .setString(AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
         EasyLoading.dismiss();
         Navigator.of(context)
             .pushNamedAndRemoveUntil("/application", (route) => false);
       } catch (e) {
         print("saving local storage error ${e.toString()}");
       }
-    }else{
+    } else {
       EasyLoading.dismiss();
       toastInfo(msg: "unknown error");
     }
