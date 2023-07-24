@@ -2,6 +2,7 @@ import 'package:CodeGenius/Online_Course/pages/sign_in/bloc/signin_blocs.dart';
 import 'package:CodeGenius/Online_Course/pages/sign_in/bloc/signin_events.dart';
 import 'package:CodeGenius/Online_Course/pages/sign_in/bloc/signin_states.dart';
 import 'package:CodeGenius/Online_Course/pages/sign_in/signin_controller.dart';
+import '../../common/widgets/base_text_widget.dart';
 import '../common_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

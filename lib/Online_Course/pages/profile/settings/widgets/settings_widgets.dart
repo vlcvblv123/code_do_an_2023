@@ -1,17 +1,6 @@
-import 'package:CodeGenius/Online_Course/common/values/colors.dart';
-import 'package:CodeGenius/Online_Course/pages/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildAppbar() {
-  return AppBar(
-    title: Container(
-      child: Container(
-        child: reusableText("Settings"),
-      ),
-    ),
-  );
-}
 
 Widget settingsButton(BuildContext context, void Function()? func){
   return GestureDetector(

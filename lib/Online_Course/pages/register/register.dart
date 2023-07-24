@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/widgets/base_text_widget.dart';
 import '../common_widgets.dart';
 import 'bloc/resgister_events.dart';
 

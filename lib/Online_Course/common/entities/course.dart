@@ -1,5 +1,4 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CourseRequestEntity {
   int? id;
@@ -9,9 +8,10 @@ class CourseRequestEntity {
   });
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-  };
+        "id": id,
+      };
 }
+
 
 class SearchRequestEntity {
   String? search;
@@ -21,8 +21,8 @@ class SearchRequestEntity {
   });
 
   Map<String, dynamic> toJson() => {
-    "search": search,
-  };
+        "search": search,
+      };
 }
 
 class CourseListResponseEntity {
@@ -35,12 +35,15 @@ class CourseListResponseEntity {
     this.msg,
     this.data,
   });
-
+  // json['data'] has maps internally, so we need to go through fromJson method
   factory CourseListResponseEntity.fromJson(Map<String, dynamic> json) =>
       CourseListResponseEntity(
         code: json["code"],
         msg: json["msg"],
-        data: json["data"] == null ? [] : List<CourseItem>.from(json["data"].map((x) => CourseItem.fromJson(x))),
+        data: json["data"] == null
+            ? []
+            : List<CourseItem>.from(
+                json["data"].map((x) => CourseItem.fromJson(x))),
       );
 }
 
@@ -64,8 +67,6 @@ class CourseDetailResponseEntity {
       );
 }
 
-
-
 class AuthorRequestEntity {
   String? token;
 
@@ -74,9 +75,10 @@ class AuthorRequestEntity {
   });
 
   Map<String, dynamic> toJson() => {
-    "token": token,
-  };
+        "token": token,
+      };
 }
+
 //api post response msg
 class AuthorResponseEntity {
   int? code;
@@ -97,8 +99,6 @@ class AuthorResponseEntity {
       );
 }
 
-
-
 // login result
 class AuthorItem {
   String? token;
@@ -106,8 +106,8 @@ class AuthorItem {
   String? description;
   String? avatar;
   String? job;
-  int? follow;
-  int? score;
+  //int? follow;
+  //int? score;
   int? download;
   int? online;
 
@@ -117,39 +117,36 @@ class AuthorItem {
     this.description,
     this.avatar,
     this.job,
-    this.follow,
-    this.score,
+    //this.follow,
+    //this.score,
     this.download,
     this.online,
   });
 
-  factory AuthorItem.fromJson(Map<String, dynamic> json) =>
-      AuthorItem(
+  factory AuthorItem.fromJson(Map<String, dynamic> json) => AuthorItem(
         token: json["token"],
         name: json["name"],
         description: json["description"],
         avatar: json["avatar"],
         job: json["job"],
-        follow: json["follow"],
-        score: json["score"],
+        //follow: json["follow"],
+        //score: json["score"],
         download: json["download"],
         online: json["online"],
       );
 
   Map<String, dynamic> toJson() => {
-    "token": token,
-    "name": name,
-    "description": description,
-    "avatar": avatar,
-    "job": job,
-    "follow": follow,
-    "score": score,
-    "download": download,
-    "online": online,
-  };
-
+        "token": token,
+        "name": name,
+        "description": description,
+        "avatar": avatar,
+        "job": job,
+        //"follow": follow,
+        //"score": score,
+        "download": download,
+        "online": online,
+      };
 }
-
 
 // login result
 class CourseItem {
@@ -163,9 +160,10 @@ class CourseItem {
   int? lesson_num;
   int? video_len;
   int? down_num;
-  int? follow;
-  int? score;
+  //int? follow;
+  //int? score;
   int? id;
+  int? status;
 
   CourseItem({
     this.user_token,
@@ -178,43 +176,42 @@ class CourseItem {
     this.lesson_num,
     this.video_len,
     this.down_num,
-    this.follow,
-    this.score,
+    //this.follow,
+    //this.score,
     this.id,
+    this.status
   });
 
-  factory CourseItem.fromJson(Map<String, dynamic> json) =>
-      CourseItem(
+  factory CourseItem.fromJson(Map<String, dynamic> json) => CourseItem(
         user_token: json["user_token"],
         name: json["name"],
         description: json["description"],
         thumbnail: json["thumbnail"],
         video: json["video"],
-        price: json["price"],
+        price: json["price"].toString(),
         amount_total: json["amount_total"],
         lesson_num: json["lesson_num"],
-        video_len: json["video_len"],
-        down_num: json["down_num"],
-        follow: json["follow"],
-        score: json["score"],
+        video_len: json["video_length"],
+        down_num: json["downloadable_res"],
+        //follow: json["follow"],
+        //score: json["score"],
         id: json["id"],
+        status:  json["status"]??0
       );
 
   Map<String, dynamic> toJson() => {
-    "user_token": user_token,
-    "name": name,
-    "description": description,
-    "thumbnail": thumbnail,
-    "video": video,
-    "price": price,
-    "amount_total": amount_total,
-    "lesson_num": lesson_num,
-    "video_len": video_len,
-    "down_num": down_num,
-    "follow": follow,
-    "score": score,
-    "id": id,
-  };
-
+        "user_token": user_token,
+        "name": name,
+        "description": description,
+        "thumbnail": thumbnail,
+        "video": video,
+        "price": price,
+        "amount_total": amount_total,
+        "lesson_num": lesson_num,
+        "video_len": video_len,
+        //"down_num": down_num,
+        //"follow": follow,
+        //"score": score,
+        "id": id,
+      };
 }
-

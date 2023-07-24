@@ -6,8 +6,8 @@ import '../providers/chat_provider.dart';
 import '../providers/models_provider.dart';
 import 'chat_screen.dart';
 
-class ChatgptScreen extends StatelessWidget {
-  const ChatgptScreen({super.key});
+class ChatGPTScreen extends StatelessWidget {
+  const ChatGPTScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

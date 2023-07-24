@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
                 routes: {
                   // "myHomePage": (context) => const MyHomePage(),
                   "signIn": (context) => const SignIn(),
-                  "chatGptScreen": (context) => const ChatgptScreen(),
+                  "chatGptScreen": (context) => const ChatGPTScreen(),
                   "register": ((context) => const Register()),
                   "application":((context) => const ApplicationPage()),
                   "settings": (context) => const SettingsPage()
